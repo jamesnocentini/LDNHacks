@@ -1,4 +1,7 @@
 extends layout
 
 block body
-  p hello world!
+  div(ng-controller='HackathonListCtrl')
+    ul
+      li(ng-repeat='hackathon in hackathons')
+        p {{hackathon.what}}

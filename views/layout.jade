@@ -3,7 +3,8 @@ html
   head
     title London Hackathons
     script(src='http://code.jquery.com/jquery.min.js')
-    != js('script')
+    != js('lib/angular.min')
+    != js('app')
     != css('style')
     script(type='text/javascript')
       var _gaq = _gaq || [];
@@ -16,6 +17,6 @@ html
         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
       })();
     block head
-  body
+  body(ng-app)
     block body
 
