@@ -10,7 +10,7 @@ app.use express.bodyParser()
 app.use express.cookieParser()
 app.use require('connect-assets')()
 app.use app.router
-app.use express.static __dirname + '/public'
+
 
 app.get '/', (req, res) ->
   res.render 'index'

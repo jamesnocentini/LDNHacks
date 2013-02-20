@@ -1,7 +1,14 @@
 extends layout
 
 block body
+  header
+    div.headline
+      h1.logotype London Hackathons
   div(ng-controller='HackathonListCtrl')
     ul
       li(ng-repeat='hackathon in hackathons')
         p {{hackathon.what}}
+        p {{hackathon.when}}
+        p {{hackathon.where}}
+        p {{hackathon.about}}
+        img(src="{{hackathon.img}}")
