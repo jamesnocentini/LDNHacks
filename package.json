@@ -12,7 +12,9 @@
 	"node-static": "0.6.7",
 	"connect-assets": "",
 	"jade": "",
-	"stylus": ""
+	"stylus": "",
+	"coffee-script": "1.4.0",
+	"connect": ""
   },
   "devDependencies": {},
   "scripts": {
