@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="6aee18fe-1303-4f30-99ee-f7bd3232fb1c" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public" afterPath="$PROJECT_DIR$/public" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="LDNHacks.iws" />
     <ignored path=".idea/workspace.xml" />
