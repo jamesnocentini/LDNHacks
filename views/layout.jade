@@ -7,7 +7,9 @@ html
     script(src='http://code.jquery.com/jquery.min.js')
     != js('lib/angular.min')
     != js('app')
+    != js('directives')
     != css('style')
+
     script(type='text/javascript')
       var _gaq = _gaq || [];
       _gaq.push(['_setAccount', 'UA-38639412-1']);
@@ -19,6 +21,6 @@ html
         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
       })();
     block head
-  body(ng-app)
+  body(ng-app="LDNHacks")
     block body
 

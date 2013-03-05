@@ -14,7 +14,10 @@
 	"jade": "",
 	"stylus": "",
 	"coffee-script": "1.4.0",
-	"connect": ""
+	"connect": "",
+    "oauth": "",
+    "redis": "",
+    "connect-redis": ""
   },
   "devDependencies": {},
   "scripts": {
@@ -23,5 +26,7 @@
   },
   "repository": "",
   "author": "",
-  "license": "BSD"
+  "license": "BSD",
+  "_id": "oauth@0.9.8",
+  "_from": "oauth@~0.9.8"
 }

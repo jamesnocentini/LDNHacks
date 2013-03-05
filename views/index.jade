@@ -1,20 +1,33 @@
 extends layout
 
 block body
-  header
-    div.toptitle
-      h1.logotype London Hackathons
-  div.scroller(ng-controller='HackathonListCtrl')
-    ul
-      li(ng-repeat='hackathon in hackathons')
-        div.hackathon
-          div.break
-            h2 {{hackathon.what}}
-          div.content.constrained
-            h3 {{hackathon.when}}
-            p {{hackathon.where}}
-            div.logo
-              img(src="{{hackathon.img}}")
-            div.sidetext
-              p {{hackathon.about}}
-              a.rsvp(onclick='window.open("{{hackathon.rsvp}}")') RSVP
+      div(ng-controller="HackathonListCtrl")
+          header
+            div.toptitle
+            h1.logotype London Hackathons
+            div.signin
+                a(class="grey", href="/auth/twitter") Sign In
+          div.scroller
+            div(ng-repeat="hackathon in hackathons")
+                ul
+                  li
+                  div.break
+                    h2 {{hackathon.what}}
+                  div.content.constrained
+                    h3 {{hackathon.when}}
+                    p {{hackathon.where}}
+                    div.logo
+                      img(src="{{hackathon.img}}")
+                    div.sidetext
+                      p {{hackathon.about}}
+                      a.rsvp(onclick='window.open("{{hackathon.rsvp}}")') RSVP
+
+                      participants
+                          button(class="grey", ng-click="participateAndUpdateView()", type="submit") I'm Going
+                          div(ng-repeat="participant in participants")
+                              a(onclick="window.open('https://www.twitter.com/{{participant.screen_name}}')")
+                                img.thumb(src="{{participant.profile_pic}}")
+
+
+
+

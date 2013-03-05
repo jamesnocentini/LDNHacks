@@ -1,20 +1,148 @@
 express = require 'express'
 app = express()
+RedisStore = require('connect-redis')(express)
 
-PORT = process.env.PORT || 5000
-
+# Assets path
+app.use require('connect-assets')()
 app.set 'view engine', 'jade'
 
-app.use express.logger()
+# Parse POST data
 app.use express.bodyParser()
+# Parse Cookie Data
 app.use express.cookieParser()
-app.use require('connect-assets')()
-app.use app.router
 
+# Launch Main App
+PORT = process.env.PORT || 5000
+app.listen PORT, ->
+  console.log "ready to hack - listening on port #{PORT}"
+
+# Redis
+redis = require('redis')
+options = { parser: 'javascript'}
+redisClient = redis.createClient(10382, 'dory.redistogo.com', options)
+redisClient.auth('22be40d5a50b2875d679bd3d3974b912')
+
+#Setting up Redis backed sessions
+app.use express.session {secret: "james", store: new RedisStore({client: redisClient})}
+
+app.use express.logger()
+app.use app.router
 
 app.get '/', (req, res) ->
   res.render 'index'
 
-app.listen PORT, ->
-  console.log "ready to hack - listening on port #{PORT}"
+user = {screen_name: "Guest", profile_pic: "none"}
+OAuth = require('oauth').OAuth
+#New OAuth function to connect to Twitter API
+oauth = new OAuth(
+  "https://api.twitter.com/oauth/request_token",
+  "https://api.twitter.com/oauth/access_token",
+  "7QzOIjxJMGIZZbtM5Yxyig",
+  "wxcxwj21rMFO2fH0vsfluGdbH4gw2TPwSArmHSA2vZQ",
+  "1.1A",
+  "http://localhost:5000/auth/twitter/callback",
+  "HMAC-SHA1"
+)
+app.get '/auth/twitter', (req, res) ->
+  oauth.getOAuthRequestToken (error, oauth_token, oauth_token_secret, results) ->
 
+    if error
+      console.log(error)
+      res.send "Authentification failed"
+    else
+      req.session.oauth =
+        token: oauth_token,
+        token_secret: oauth_token_secret
+
+
+      res.redirect 'https://twitter.com/oauth/authenticate?oauth_token='+oauth_token
+#Callback
+app.get '/auth/twitter/callback', (req, res, next) ->
+
+  if req.session.oauth
+    console.log "Yo"
+    req.session.oauth.verifier = req.query.oauth_verifier
+    oauth_data = req.session.oauth
+
+    oauth.getOAuthAccessToken(
+      oauth_data.token,
+      oauth_data.token_secret,
+      oauth_data.verifier,
+      (error, oauth_access_token, oauth_access_token_secret, results) ->
+        if error
+          console.log error
+          res.send "Authentification Failue!"
+
+        else
+          req.session.oauth.access_token = oauth_access_token
+          req.session.oauth.access_token_secret = oauth_access_token_secret
+
+          # Get request to Twitter API to get the user infos
+          oauth.get('https://api.twitter.com/1.1/users/show.json?screen_name='+results.screen_name, req.session.oauth.access_token, req.session.oauth.access_token_secret, (error, data, response) ->
+            data = JSON.parse data
+            user = { screen_name: data.screen_name, profile_pic: data.profile_image_url}
+            console.log(data)
+
+          )
+
+          res.redirect('/');
+    )
+
+
+  else
+    res.redirect '/'
+
+#Send the user infos (Guest if not logged in via OAuth)
+app.get '/auth/twitter/user', (req, res) ->
+  res.send user
+
+
+#Parse the body of the post request and store it in a Redis List
+app.post '/participate', (req, res) ->
+  data = req.body
+  hackathonList = data.hackathon
+
+  #Redis Lists store strings
+  data = JSON.stringify({hackathon: data.hackathon, screen_name: data.screen_name, profile_pic: data.profile_pic})
+  console.log(data)
+  redisClient.lpush(hackathonList, data, (err, response)  ->
+      redisClient.ltrim(hackathonList, 0, 3)
+      if response
+        console.log("success")
+  )
+
+
+# Parse the strings fetched from redis to JSON
+participantsJSON = []
+parseFunction = (participants) ->
+  participantsJSON = []
+  participants.forEach((participant) ->
+    participant = JSON.parse(participant)
+    participantsJSON.push(participant)
+
+  )
+
+#Send the list of participants to each hackathon participants directive
+app.get '/participants/hack1', (req, res) ->
+  redisClient.lrange("hack1", 0 , -1, (error, participants) ->
+    parseFunction(participants)
+    res.send participantsJSON
+  )
+
+app.get '/participants/hack2', (req, res) ->
+  redisClient.lrange("hack2", 0, -1, (error, participants) ->
+    parseFunction(participants)
+    res.send participantsJSON
+  )
+
+app.get '/participants/hack3', (req, res) ->
+  redisClient.lrange("hack3", 0 , -1, (error, participants) ->
+    parseFunction(participants)
+    res.send participantsJSON
+  )
+
+app.get '/participants/hack4', (req, res) ->
+  redisClient.lrange("hack4", 0 ,-1, (error, participants) ->
+    parseFunction(participants)
+    res.send participantsJSON
+  )
