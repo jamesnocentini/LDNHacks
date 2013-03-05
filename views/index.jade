@@ -6,7 +6,7 @@ block body
             div.toptitle
             h1.logotype London Hackathons
             div.signin
-                a(class="grey", href="/auth/twitter") Sign In
+                a(class="grey", href="/auth/twitter") Sign In {{user.screen_name}}
           div.scroller
             div(ng-repeat="hackathon in hackathons")
                 ul
