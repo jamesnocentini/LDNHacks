@@ -3,6 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="6aee18fe-1303-4f30-99ee-f7bd3232fb1c" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app.coffee" afterPath="$PROJECT_DIR$/app.coffee" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/css/style.styl" afterPath="$PROJECT_DIR$/assets/css/style.styl" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/js/app.coffee" afterPath="$PROJECT_DIR$/assets/js/app.coffee" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/js/directives.coffee" afterPath="$PROJECT_DIR$/assets/js/directives.coffee" />
     </list>
     <ignored path="LDNHacks.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -34,8 +37,37 @@
       <file leaf-file-name="app.coffee" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app.coffee">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="42" column="41" selection-start="1182" selection-end="1182" vertical-scroll-proportion="0.33197555">
+            <state line="42" column="64" selection-start="1205" selection-end="1205" vertical-scroll-proportion="0.41955194">
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="app.coffee" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/assets/js/app.coffee">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="54" column="19" selection-start="3543" selection-end="3543" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="style.styl" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/assets/css/style.styl">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="44" column="29" selection-start="905" selection-end="905" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="directives.coffee" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/assets/js/directives.coffee">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="83" column="8" selection-start="2587" selection-end="2587" vertical-scroll-proportion="0.0">
+              <folding>
+                <marker date="1362585114000" expanded="true" signature="2295:2360" placeholder="{&quot;restrict&quot;: &quot;E&quot;...}" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -56,9 +88,9 @@
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/node_modules/oauth/lib/oauth.js" />
         <option value="$PROJECT_DIR$/views/layout.jade" />
-        <option value="$PROJECT_DIR$/assets/js/app.coffee" />
         <option value="$PROJECT_DIR$/views/index.jade" />
         <option value="$PROJECT_DIR$/assets/css/style.styl" />
+        <option value="$PROJECT_DIR$/assets/js/app.coffee" />
         <option value="$PROJECT_DIR$/assets/js/directives.coffee" />
         <option value="$PROJECT_DIR$/app.coffee" />
       </list>
@@ -139,60 +171,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="LDNHacks" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="LDNHacks" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="node_modules" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="LDNHacks" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="LDNHacks" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="node_modules" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="oauth" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="LDNHacks" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="LDNHacks" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="node_modules" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="oauth" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lib" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -388,24 +366,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/assets/js/directives.coffee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="75" column="0" selection-start="2370" selection-end="2370" vertical-scroll-proportion="2.1760154" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/layout.jade">
       <provider selected="true" editor-type-id="text-editor">
         <state line="4" column="4" selection-start="49" selection-end="49" vertical-scroll-proportion="0.11320755" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/css/style.styl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="125" column="9" selection-start="2407" selection-end="2407" vertical-scroll-proportion="0.26415095" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/js/app.coffee">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="56" column="16" selection-start="3238" selection-end="3238" vertical-scroll-proportion="0.59381044" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/oauth/lib/oauth.js">
@@ -420,9 +383,32 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/assets/css/style.styl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="44" column="29" selection-start="905" selection-end="905" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/js/directives.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="83" column="8" selection-start="2587" selection-end="2587" vertical-scroll-proportion="0.0">
+          <folding>
+            <marker date="1362585114000" expanded="true" signature="2295:2360" placeholder="{&quot;restrict&quot;: &quot;E&quot;...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/js/app.coffee">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="54" column="19" selection-start="3543" selection-end="3543" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app.coffee">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="42" column="41" selection-start="1182" selection-end="1182" vertical-scroll-proportion="0.33197555">
+        <state line="42" column="64" selection-start="1205" selection-end="1205" vertical-scroll-proportion="0.41955194">
           <folding />
         </state>
       </provider>

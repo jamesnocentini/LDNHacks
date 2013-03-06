@@ -130,19 +130,25 @@ app.get '/participants/hack1', (req, res) ->
   )
 
 app.get '/participants/hack2', (req, res) ->
-  redisClient.lrange("hack2", 0, -1, (error, participants) ->
+  redisClient.lrange("hack2", 0 , -1, (error, participants) ->
     parseFunction(participants)
     res.send participantsJSON
   )
 
 app.get '/participants/hack3', (req, res) ->
-  redisClient.lrange("hack3", 0 , -1, (error, participants) ->
+  redisClient.lrange("hack3", 0, -1, (error, participants) ->
     parseFunction(participants)
     res.send participantsJSON
   )
 
 app.get '/participants/hack4', (req, res) ->
-  redisClient.lrange("hack4", 0 ,-1, (error, participants) ->
+  redisClient.lrange("hack4", 0 , -1, (error, participants) ->
+    parseFunction(participants)
+    res.send participantsJSON
+  )
+
+app.get '/participants/hack5', (req, res) ->
+  redisClient.lrange("hack5", 0 ,-1, (error, participants) ->
     parseFunction(participants)
     res.send participantsJSON
   )

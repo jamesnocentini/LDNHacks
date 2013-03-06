@@ -55,7 +55,7 @@ app.directive 'participants', ($http, $timeout) ->
 
     #When user is connected load state of buttons
     #Settimeout necessary because the code in the linking function executes before the controller code ($http.get)
-    setTimeout ( ->
+     $timeout ( ->
       checkParticipants(() ->
         if reply == "Already attending"
           element.children().addClass("green")
@@ -64,7 +64,7 @@ app.directive 'participants', ($http, $timeout) ->
           return
         else
       )
-    ), 1000
+    ),800
 
   return {
     restrict: "E",
@@ -81,7 +81,7 @@ app.directive 'signin', () ->
         return
       else
         element.html("Signed in as "+scope.user.screen_name)
-    ), 400
+    ), 800
 
   return {
     restrict: "E",
