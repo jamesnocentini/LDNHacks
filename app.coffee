@@ -40,7 +40,7 @@ oauth = new OAuth(
   "7QzOIjxJMGIZZbtM5Yxyig",
   "wxcxwj21rMFO2fH0vsfluGdbH4gw2TPwSArmHSA2vZQ",
   "1.1A",
-  "http://londonhackathons.herokuapp.com/auth/twitter/callback",
+  "http://localhost:5000/auth/twitter/callback",
   "HMAC-SHA1"
 )
 app.get '/auth/twitter', (req, res) ->
@@ -106,7 +106,7 @@ app.post '/participate', (req, res) ->
   data = JSON.stringify({hackathon: data.hackathon, screen_name: data.screen_name, profile_pic: data.profile_pic})
   console.log(data)
   redisClient.lpush(hackathonList, data, (err, response)  ->
-      redisClient.ltrim(hackathonList, 0, 3)
+      redisClient.ltrim(hackathonList, 0, 15)
       if response
         console.log("success")
   )

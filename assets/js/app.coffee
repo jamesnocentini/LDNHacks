@@ -55,9 +55,7 @@ app = angular.module('LDNHacks', ['LDNHacks.directives'])
 
 
       $http.post('/participate', $scope.participant).success((data) ->
-
-      console.log($scope.participant)
-
+          console.log($scope.participant)
       )
 
     $scope.fetch2 = () ->

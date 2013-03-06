@@ -6,7 +6,8 @@ block body
             div.toptitle
             h1.logotype London Hackathons
             div.signin
-                a(class="grey", href="/auth/twitter") Sign In {{user.screen_name}}
+                a(class="grey", href="/auth/twitter")
+                    signin Sign In
           div.scroller
             div(ng-repeat="hackathon in hackathons")
                 ul
@@ -23,7 +24,7 @@ block body
                       a.rsvp(onclick='window.open("{{hackathon.rsvp}}")') RSVP
 
                       participants
-                          button(class="grey", ng-click="participateAndUpdateView()", type="submit") I'm Going
+                          button(class="grey", ng-click="participateAndUpdateView()", type="submit") Going?
                           div(ng-repeat="participant in participants")
                               a(onclick="window.open('https://www.twitter.com/{{participant.screen_name}}')")
                                 img.thumb(src="{{participant.profile_pic}}")
