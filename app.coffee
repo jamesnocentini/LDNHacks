@@ -23,21 +23,27 @@ options = { parser: 'javascript'}
 redisClient = redis.createClient(10382, 'dory.redistogo.com', options)
 redisClient.auth('22be40d5a50b2875d679bd3d3974b912')
 
+callback_url = ''
 #Development
 app.configure('development', ->
-  app.use express.session({
-    secret:"password",
-    store: new RedisStore({
-      host: "127.0.0.1",
-      port: "6379"
-    })
-  })
+  callback_url = "http://londonhackathons.herokuapp.com/auth/twitter/callback"
+  redisUrl = url.parse(process.env.REDISTOGO_URL)
+  redisAuth = redisUrl.auth.split(':')
+
+  app.use express.session {secret: "LDNHacks", store: new RedisStore({
+  host: redisUrl.hostname,
+  port: redisUrl.port,
+  db: redisAuth[0],
+  pass: redisAuth[1]
+  })}
 )
 
 #Production
 app.configure('production', ->
+  callback_url = "http://londonhackathons.herokuapp.com/auth/twitter/callback"
   redisUrl = url.parse(process.env.REDISTOGO_URL)
   redisAuth = redisUrl.auth.split(':')
+
   app.use express.session {secret: "LDNHacks", store: new RedisStore({
     host: redisUrl.hostname,
     port: redisUrl.port,
@@ -63,7 +69,7 @@ oauth = new OAuth(
   "7QzOIjxJMGIZZbtM5Yxyig",
   "wxcxwj21rMFO2fH0vsfluGdbH4gw2TPwSArmHSA2vZQ",
   "1.1A",
-  "http://londonhackathons.herokuapp.com/auth/twitter/callback",
+  callback_url,
   "HMAC-SHA1"
 )
 app.get '/auth/twitter', (req, res) ->
