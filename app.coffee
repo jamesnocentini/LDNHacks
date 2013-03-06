@@ -1,6 +1,7 @@
 express = require 'express'
 app = express()
 RedisStore = require('connect-redis')(express)
+url = require('url')
 
 # Assets path
 app.use require('connect-assets')()
@@ -22,8 +23,29 @@ options = { parser: 'javascript'}
 redisClient = redis.createClient(10382, 'dory.redistogo.com', options)
 redisClient.auth('22be40d5a50b2875d679bd3d3974b912')
 
-#Setting up Redis backed sessions
-app.use express.session {secret: "james", store: new RedisStore({client: redisClient})}
+#Development
+app.configure('development', ->
+  app.use express.session({
+    secret:"password",
+    store: new RedisStore({
+      host: "127.0.0.1",
+      port: "6379"
+    })
+  })
+)
+
+#Production
+app.configure('production', ->
+  redisUrl = url.parse(process.env.REDISTOGO_URL)
+  redisAuth = redisUrl.auth.split(':')
+  app.use express.session {secret: "LDNHacks", store: new RedisStore({
+    host: redisUrl.hostname,
+    port: redisUrl.port,
+    db: redisAuth[0],
+    pass: redisAuth[1]
+  })}
+)
+
 
 app.use express.logger()
 app.use app.router
