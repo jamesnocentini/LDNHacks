@@ -47,6 +47,7 @@ app.configure('production', ->
 )
 
 
+
 app.use express.logger()
 app.use app.router
 
@@ -174,3 +175,6 @@ app.get '/participants/hack5', (req, res) ->
     parseFunction(participants)
     res.send participantsJSON
   )
+
+
+console.log(app.settings.env)
