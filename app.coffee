@@ -40,7 +40,7 @@ oauth = new OAuth(
   "7QzOIjxJMGIZZbtM5Yxyig",
   "wxcxwj21rMFO2fH0vsfluGdbH4gw2TPwSArmHSA2vZQ",
   "1.1A",
-  "http://localhost:5000/auth/twitter/callback",
+  "http://londonhackathons.herokuapp.com/auth/twitter/callback",
   "HMAC-SHA1"
 )
 app.get '/auth/twitter', (req, res) ->
