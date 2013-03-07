@@ -25,13 +25,9 @@ redisClient = redis.createClient(10382, 'dory.redistogo.com', options)
 redisClient.auth('22be40d5a50b2875d679bd3d3974b912')
 
 app.use express.session {secret: "LDNHacks", store: new RedisStore({client: redisClient})}
-callback_url = ''
-app.configure('development', ->
-  callback_url="http://localhost:5000/auth/twitter/callback"
-)
-app.configure('production', ->
-  callback_url="http://londonhackathons.herokuapp.com/auth/twitter/callback"
-)
+
+callback_url="http://londonhackathons.herokuapp.com/auth/twitter/callback"
+
 
 app.use express.logger()
 app.use app.router
