@@ -10,7 +10,8 @@ app.set 'view engine', 'jade'
 # Parse POST data
 app.use express.bodyParser()
 # Parse Cookie Data
-app.use express.cookieParser()
+app.use express.cookieParser('many')
+
 
 # Launch Main App
 PORT = process.env.PORT || 5000
@@ -23,42 +24,22 @@ options = { parser: 'javascript'}
 redisClient = redis.createClient(10382, 'dory.redistogo.com', options)
 redisClient.auth('22be40d5a50b2875d679bd3d3974b912')
 
+app.use express.session {secret: "LDNHacks", store: new RedisStore({client: redisClient})}
 callback_url = ''
-#Development
 app.configure('development', ->
-  callback_url = "http://londonhackathons.herokuapp.com/auth/twitter/callback"
-  redisUrl = url.parse(process.env.REDISTOGO_URL)
-  redisAuth = redisUrl.auth.split(':')
-
-  app.use express.session {secret: "LDNHacks", store: new RedisStore({
-  host: redisUrl.hostname,
-  port: redisUrl.port,
-  db: redisAuth[0],
-  pass: redisAuth[1]
-  })}
+  callback_url="http://localhost:5000/auth/twitter/callback"
 )
-
-#Production
 app.configure('production', ->
-  callback_url = "http://londonhackathons.herokuapp.com/auth/twitter/callback"
-  redisUrl = url.parse(process.env.REDISTOGO_URL)
-  redisAuth = redisUrl.auth.split(':')
-
-  app.use express.session {secret: "LDNHacks", store: new RedisStore({
-    host: redisUrl.hostname,
-    port: redisUrl.port,
-    db: redisAuth[0],
-    pass: redisAuth[1]
-  })}
+  callback_url="http://londonhackathons.herokuapp.com/auth/twitter/callback"
 )
-
-
 
 app.use express.logger()
 app.use app.router
 
 app.get '/', (req, res) ->
+
   res.render 'index'
+
 
 user = {screen_name: "Guest", profile_pic: "none"}
 OAuth = require('oauth').OAuth
@@ -90,6 +71,7 @@ app.get '/auth/twitter/callback', (req, res, next) ->
 
   if req.session.oauth
     console.log "Yo"
+    console.log(req.session)
     req.session.oauth.verifier = req.query.oauth_verifier
     oauth_data = req.session.oauth
 
@@ -106,7 +88,30 @@ app.get '/auth/twitter/callback', (req, res, next) ->
           req.session.oauth.access_token = oauth_access_token
           req.session.oauth.access_token_secret = oauth_access_token_secret
           req.session.username = results.screen_name
-          RedisStore.set(results.user_id, req.session)
+
+          redisClient.get('user:username:'+results.screen_name+':id', (err, reply) ->
+            #Save in DB
+            if !reply
+              #User doesn't exist, save it to DB
+              redisClient.incr('user_id')
+              redisClient.get('user_id', (err, reply) ->
+                if err || !reply
+                  console.log(err, reply)
+                  return
+              )
+
+              id = parseInt(reply)
+              redisClient.sadd('user:id', id)
+              redisClient.hset('user:'+id, 'username', results.screen_name)
+              redisClient.hset('user:'+id, 'service_user_id', results.user_id)
+
+              redisClient.set('user:username:'+results.screen_name+':id', id)
+
+
+
+
+
+          )
 
           res.redirect('/');
     )
@@ -121,10 +126,9 @@ app.get '/auth/twitter/user', (req, res) ->
   oauth.get('https://api.twitter.com/1.1/users/show.json?screen_name='+req.session.username, req.session.oauth.access_token, req.session.oauth.access_token_secret, (error, data, response) ->
     data = JSON.parse data
     user = { screen_name: data.screen_name, profile_pic: data.profile_image_url}
-    console.log(data)
-
   )
   res.send user
+  console.log(req.session)
 
 
 #Parse the body of the post request and store it in a Redis List
