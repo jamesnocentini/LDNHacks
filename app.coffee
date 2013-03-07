@@ -24,10 +24,11 @@ options = { parser: 'javascript'}
 redisClient = redis.createClient(10382, 'dory.redistogo.com', options)
 redisClient.auth('22be40d5a50b2875d679bd3d3974b912')
 
+#Back session with Redis
 app.use express.session {secret: "LDNHacks", store: new RedisStore({client: redisClient})}
 
+#Change to localhost:8080 in development
 callback_url="http://londonhackathons.herokuapp.com/auth/twitter/callback"
-
 
 app.use express.logger()
 app.use app.router
@@ -102,16 +103,10 @@ app.get '/auth/twitter/callback', (req, res, next) ->
 
               redisClient.set('user:username:'+results.screen_name+':id', id)
 
-
-
-
-
           )
 
           res.redirect('/');
     )
-
-
   else
     res.redirect '/'
 
@@ -126,9 +121,6 @@ app.get '/auth/twitter/user', (req, res) ->
         res.send user
     )
 
-
-
-
 #Parse the body of the post request and store it in a Redis List
 app.post '/participate', (req, res) ->
   data = req.body
@@ -142,7 +134,6 @@ app.post '/participate', (req, res) ->
       if response
         console.log("success")
   )
-
 
 # Parse the strings fetched from redis to JSON
 participantsJSON = []
@@ -184,6 +175,5 @@ app.get '/participants/hack5', (req, res) ->
     parseFunction(participants)
     res.send participantsJSON
   )
-
 
 console.log(app.settings.env)
