@@ -30,7 +30,7 @@ app.directive 'participants', ($http, $timeout) ->
 
 
     scope.participateAndUpdateView = () ->
-      if scope.user.screen_name == 'Guest'
+      if scope.user.screen_name == 'Guest' || !scope.user.screen_name
         #The user is not logged in
         alert "Please log in!"
         return
@@ -77,11 +77,11 @@ app.directive 'participants', ($http, $timeout) ->
 app.directive 'signin', () ->
   linker = (scope, element) ->
     setTimeout ( ->
-      if scope.user.screen_name == 'Guest'
+      if scope.user.screen_name == 'Guest' || !scope.user.screen_name
         return
       else
         element.html("Signed in as "+scope.user.screen_name)
-    ), 800
+    ), 2000
 
   return {
     restrict: "E",

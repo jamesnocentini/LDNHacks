@@ -37,7 +37,7 @@ app.get '/', (req, res) ->
   res.render 'index'
 
 
-user = {screen_name: "Guest", profile_pic: "none"}
+
 OAuth = require('oauth').OAuth
 #New OAuth function to connect to Twitter API
 oauth = new OAuth(
@@ -66,8 +66,7 @@ app.get '/auth/twitter', (req, res) ->
 app.get '/auth/twitter/callback', (req, res, next) ->
 
   if req.session.oauth
-    console.log "Yo"
-    console.log(req.session)
+
     req.session.oauth.verifier = req.query.oauth_verifier
     oauth_data = req.session.oauth
 
@@ -119,12 +118,15 @@ app.get '/auth/twitter/callback', (req, res, next) ->
 #Send the user infos (Guest if not logged in via OAuth)
 app.get '/auth/twitter/user', (req, res) ->
   # Get request to Twitter API to get the user infos
-  oauth.get('https://api.twitter.com/1.1/users/show.json?screen_name='+req.session.username, req.session.oauth.access_token, req.session.oauth.access_token_secret, (error, data, response) ->
-    data = JSON.parse data
-    user = { screen_name: data.screen_name, profile_pic: data.profile_image_url}
-  )
-  res.send user
-  console.log(req.session)
+
+    oauth.get('https://api.twitter.com/1.1/users/show.json?screen_name='+req.session.username, req.session.oauth.access_token, req.session.oauth.access_token_secret, (error, data, response) ->
+      if data
+        req.session.data = JSON.parse data
+        user = { screen_name: req.session.data.screen_name, profile_pic: req.session.data.profile_image_url}
+        res.send user
+    )
+
+
 
 
 #Parse the body of the post request and store it in a Redis List

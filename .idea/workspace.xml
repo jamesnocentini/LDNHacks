@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6aee18fe-1303-4f30-99ee-f7bd3232fb1c" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app.coffee" afterPath="$PROJECT_DIR$/app.coffee" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/js/directives.coffee" afterPath="$PROJECT_DIR$/assets/js/directives.coffee" />
     </list>
     <ignored path="LDNHacks.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -34,8 +36,19 @@
       <file leaf-file-name="app.coffee" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app.coffee">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="27" column="0" selection-start="712" selection-end="712" vertical-scroll-proportion="0.16304348">
+            <state line="28" column="51" selection-start="764" selection-end="764" vertical-scroll-proportion="0.3846154">
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="directives.coffee" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/assets/js/directives.coffee">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="10" column="5" selection-start="415" selection-end="415" vertical-scroll-proportion="0.0">
+              <folding>
+                <marker date="1362680899000" expanded="true" signature="2322:2387" placeholder="{&quot;restrict&quot;: &quot;E&quot;...}" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -43,7 +56,7 @@
       <file leaf-file-name="app.coffee" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/assets/js/app.coffee">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="28" column="48" selection-start="1597" selection-end="1597" vertical-scroll-proportion="0.0">
+            <state line="55" column="46" selection-start="3613" selection-end="3613" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -66,18 +79,18 @@
         <option value="$PROJECT_DIR$/views/layout.jade" />
         <option value="$PROJECT_DIR$/views/index.jade" />
         <option value="$PROJECT_DIR$/assets/css/style.styl" />
+        <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/assets/js/app.coffee" />
         <option value="$PROJECT_DIR$/assets/js/directives.coffee" />
-        <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/app.coffee" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="2" />
-    <option name="y" value="398" />
+    <option name="x" value="1" />
+    <option name="y" value="390" />
     <option name="width" value="1277" />
-    <option name="height" value="345" />
+    <option name="height" value="382" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -272,13 +285,13 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="2" y="398" width="1277" height="345" extended-state="0" />
+    <frame x="1" y="390" width="1277" height="382" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1754386" sideWeight="0.994614" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1754386" sideWeight="0.992278" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -422,25 +435,25 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/assets/js/directives.coffee">
+    <entry file="file://$PROJECT_DIR$/assets/js/app.coffee">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="83" column="8" selection-start="2587" selection-end="2587" vertical-scroll-proportion="0.68085104">
-          <folding>
-            <marker date="1362585114000" expanded="true" signature="2295:2360" placeholder="{&quot;restrict&quot;: &quot;E&quot;...}" />
-          </folding>
+        <state line="55" column="46" selection-start="3613" selection-end="3613" vertical-scroll-proportion="0.0">
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/assets/js/app.coffee">
+    <entry file="file://$PROJECT_DIR$/assets/js/directives.coffee">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="48" selection-start="1597" selection-end="1597" vertical-scroll-proportion="0.0">
-          <folding />
+        <state line="10" column="5" selection-start="415" selection-end="415" vertical-scroll-proportion="0.0">
+          <folding>
+            <marker date="1362680899000" expanded="true" signature="2322:2387" placeholder="{&quot;restrict&quot;: &quot;E&quot;...}" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app.coffee">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="0" selection-start="712" selection-end="712" vertical-scroll-proportion="0.16304348">
+        <state line="28" column="51" selection-start="764" selection-end="764" vertical-scroll-proportion="0.3846154">
           <folding />
         </state>
       </provider>
