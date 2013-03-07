@@ -106,13 +106,7 @@ app.get '/auth/twitter/callback', (req, res, next) ->
           req.session.oauth.access_token = oauth_access_token
           req.session.oauth.access_token_secret = oauth_access_token_secret
 
-          # Get request to Twitter API to get the user infos
-          oauth.get('https://api.twitter.com/1.1/users/show.json?screen_name='+results.screen_name, req.session.oauth.access_token, req.session.oauth.access_token_secret, (error, data, response) ->
-            data = JSON.parse data
-            user = { screen_name: data.screen_name, profile_pic: data.profile_image_url}
-            console.log(data)
 
-          )
 
           res.redirect('/');
     )
@@ -123,6 +117,13 @@ app.get '/auth/twitter/callback', (req, res, next) ->
 
 #Send the user infos (Guest if not logged in via OAuth)
 app.get '/auth/twitter/user', (req, res) ->
+  # Get request to Twitter API to get the user infos
+  oauth.get('https://api.twitter.com/1.1/users/show.json?screen_name='+req.session.username, req.session.oauth.access_token, req.session.oauth.access_token_secret, (error, data, response) ->
+    data = JSON.parse data
+    user = { screen_name: data.screen_name, profile_pic: data.profile_image_url}
+    console.log(data)
+
+  )
   res.send user
 
 
