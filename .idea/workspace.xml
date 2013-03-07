@@ -34,7 +34,7 @@
       <file leaf-file-name="app.coffee" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app.coffee">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="107" column="52" selection-start="2943" selection-end="2943" vertical-scroll-proportion="0.790224">
+            <state line="110" column="34" selection-start="3074" selection-end="3074" vertical-scroll-proportion="0.82978725">
               <folding />
             </state>
           </provider>
@@ -424,7 +424,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app.coffee">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="107" column="52" selection-start="2943" selection-end="2943" vertical-scroll-proportion="0.790224">
+        <state line="110" column="34" selection-start="3074" selection-end="3074" vertical-scroll-proportion="0.82978725">
           <folding />
         </state>
       </provider>

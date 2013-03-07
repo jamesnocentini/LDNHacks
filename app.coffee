@@ -106,8 +106,11 @@ app.get '/auth/twitter/callback', (req, res, next) ->
           req.session.oauth.access_token = oauth_access_token
           req.session.oauth.access_token_secret = oauth_access_token_secret
           req.session.username = results.screen_name
+          RedisStore.set(results.user_id, req.session, (err, success) ->
+            if success
+              console.log("SUCCESS")
 
-
+          )
 
           res.redirect('/');
     )
