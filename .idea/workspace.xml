@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6aee18fe-1303-4f30-99ee-f7bd3232fb1c" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app.coffee" afterPath="$PROJECT_DIR$/app.coffee" />
     </list>
     <ignored path="LDNHacks.iws" />
@@ -35,7 +34,7 @@
       <file leaf-file-name="app.coffee" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app.coffee">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="29" column="35" selection-start="791" selection-end="791" vertical-scroll-proportion="-1.99389">
+            <state line="107" column="52" selection-start="2943" selection-end="2943" vertical-scroll-proportion="0.790224">
               <folding />
             </state>
           </provider>
@@ -425,7 +424,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app.coffee">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="35" selection-start="791" selection-end="791" vertical-scroll-proportion="-1.99389">
+        <state line="107" column="52" selection-start="2943" selection-end="2943" vertical-scroll-proportion="0.790224">
           <folding />
         </state>
       </provider>

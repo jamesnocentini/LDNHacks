@@ -105,6 +105,7 @@ app.get '/auth/twitter/callback', (req, res, next) ->
         else
           req.session.oauth.access_token = oauth_access_token
           req.session.oauth.access_token_secret = oauth_access_token_secret
+          req.session.username = results.screen_name
 
 
 
